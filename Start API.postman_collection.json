@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "4e4dcbc0-b32c-4de5-a382-b7239939657a",
+		"name": "Start API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Star API : planets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "swapi.co/api/planets",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"planets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Star API : films",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "swapi.co/api/films",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"films"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Star API : people",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "swapi.co/api/people/",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"people",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Star API : species",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "swapi.co/api/species/",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"species",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start API : starships",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "swapi.co/api/starships/",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"starships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Star API : vehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "swapi.co/api/vehicles/",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"vehicles",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
