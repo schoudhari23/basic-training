@@ -7,9 +7,9 @@ function unflatten(obj) {
     return final;
 }
 
-function assign (final, path, value) {
+function assign(final, path, value) {
     let lastKeyIndex = path.length - 1;
-    for (var i = 0; i < lastKeyIndex; ++i) {
+    for (let i = 0; i < lastKeyIndex; ++i) {
         let key = path[i];
         if (!(key in final)) {
             final[key] = /^\d+$/.test(path[i + 1]) ? [] : {};
