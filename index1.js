@@ -15,33 +15,37 @@ var unq2 = new Set();
 var unq3 = new Set();
 
 
-var picked_numbers1 = [];
-var picked_numbers2 = [];
-var picked_numbers3 = [];
+var pickedNumbers1 = [];
+var pickedNumbers2 = [];
+var pickedNumbers3 = [];
+
 var check = new Array(30).fill(0);
 var check1 = new Array(30).fill(0);
 var check2 = new Array(30).fill(0);
 
-var first_row = 0,
-    second_row = 0,
-    third_row = 0;
-var fr = false,
-    sr = false,
-    tr = false;
+var firstRow = 0,
+    secondRow = 0,
+    thirdRow = 0;
 
-var first_row1 = 0,
-    second_row1 = 0,
-    third_row1 = 0;
-var fr1 = false,
-    sr1 = false,
-    tr1 = false;
+var first = false,
+    second = false,
+    third = false;
 
-var first_row2 = 0,
-    second_row2 = 0,
-    third_row2 = 0;
-var fr2 = false,
-    sr2 = false,
-    tr2 = false;
+var firstRow1 = 0,
+    secondRow1 = 0,
+    thirdRow1 = 0;
+
+var first1 = false,
+    second1 = false,
+    third1 = false;
+
+var firstRow2 = 0,
+    secondRow2 = 0,
+    thirdRow2 = 0;
+
+var first2 = false,
+    second2 = false,
+    third2 = false;
 
 
 function randomNumbers() {
@@ -67,20 +71,20 @@ function randomNumbers() {
         if (unq1.size == sz1 + 1) {
             var style1 = document.getElementById("square" + rnd);
             style1.classList.add('block');
-            picked_numbers1.push(map11.get(rnd));
+            pickedNumbers1.push(map11.get(rnd));
             check[rnd] = 1;
             sz1++;
         }
     }
 
     for (i = 0; i < 10; i++) {
-        first_row += check[i];
+        firstRow += check[i];
     }
     for (i = 10; i < 20; i++) {
-        second_row += check[i];
+        secondRow += check[i];
     }
     for (i = 20; i < 30; i++) {
-        third_row += check[i]
+        thirdRow += check[i]
     }
 
 
@@ -113,20 +117,20 @@ function randomNumbers1() {
         if (unq2.size == sz2 + 1) {
             var style1 = document.getElementById("sqa" + rnd);
             style1.classList.add('block');
-            picked_numbers2.push(map22.get(rnd));
+            pickedNumbers2.push(map22.get(rnd));
             check1[rnd] = 1;
             sz2++;
         }
     }
 
     for (i = 0; i < 10; i++) {
-        first_row1 += check1[i];
+        firstRow1 += check1[i];
     }
     for (i = 10; i < 20; i++) {
-        second_row1 += check1[i];
+        secondRow1 += check1[i];
     }
     for (i = 20; i < 30; i++) {
-        third_row1 += check1[i]
+        thirdRow1 += check1[i]
     }
 
     for (i = 0; i < n.length; i++) {
@@ -157,20 +161,20 @@ function randomNumbers2() {
         if (unq3.size == sz2 + 1) {
             var style1 = document.getElementById("sqae" + rnd);
             style1.classList.add('block');
-            picked_numbers2.push(map33.get(rnd));
+            pickedNumbers2.push(map33.get(rnd));
             check2[rnd] = 1;
             sz2++;
         }
     }
 
     for (i = 0; i < 10; i++) {
-        first_row2 += check2[i];
+        firstRow2 += check2[i];
     }
     for (i = 10; i < 20; i++) {
-        second_row2 += check2[i];
+        secondRow2 += check2[i];
     }
     for (i = 20; i < 30; i++) {
-        third_row2 += check2[i]
+        thirdRow2 += check2[i]
     }
 
     for (i = 0; i < n.length; i++) {
@@ -180,91 +184,91 @@ function randomNumbers2() {
 
 
 function gen() {
-    if (picked_numbers1.length == 30) {
+    if (pickedNumbers1.length == 30) {
         alert("Player-1 wins the game!")
-    } else if (picked_numbers2.length == 30) {
+    } else if (pickedNumbers2.length == 30) {
         alert("Player-2 wins the game!")
-    } else if (picked_numbers3.length == 30) {
+    } else if (pickedNumbers3.length == 30) {
         alert("Player-3 wins the game!")
     } else {
 
-        var sel_num = Math.floor(Math.random() * 50);
-        document.getElementById("selected_num").innerHTML = sel_num;
-        if (map1.has(sel_num) && picked_numbers1.indexOf(sel_num) == -1) {
-            picked_numbers1.push(sel_num);
-            var k = map1.get(sel_num);
+        var selNum = Math.floor(Math.random() * 50);
+        document.getElementById("selected_num").innerHTML = selNum;
+        if (map1.has(selNum) && pickedNumbers1.indexOf(selNum) == -1) {
+            pickedNumbers1.push(selNum);
+            var k = map1.get(selNum);
             var style1 = document.getElementById("square" + k);
             style1.classList.add('sel-cell');
             check[k] = 1;
             if (k >= 0 && k < 10)
-                first_row += 1;
+                firstRow += 1;
             if (k >= 10 && k < 20)
-                second_row += 1;
+                secondRow += 1;
             if (k >= 20 && k < 30)
-                third_row += 1;
+                thirdRow += 1;
 
-            if (first_row == 10 && fr == false) {
-                fr = true;
+            if (firstRow == 10 && first == false) {
+                first = true;
                 alert("Player-1 : First Row");
             }
-            if (second_row == 10 && sr == false) {
-                sr = true;
+            if (secondRow == 10 && second == false) {
+                second = true;
                 alert("Player-1 : Second Row");
             }
-            if (third_row == 10 && tr == false) {
-                tr = true;
+            if (thirdRow == 10 && third == false) {
+                third = true;
                 alert("Player-1 : Third Row");
             }
         }
-        if (map2.has(sel_num) && picked_numbers2.indexOf(sel_num) == -1) {
-            picked_numbers2.push(sel_num);
-            var k = map2.get(sel_num);
+        if (map2.has(selNum) && pickedNumbers2.indexOf(selNum) == -1) {
+            pickedNumbers2.push(selNum);
+            var k = map2.get(selNum);
             var style2 = document.getElementById("sqa" + k);
             style2.classList.add('sel-cell');
             check1[k] = 1;
             if (k >= 0 && k < 10)
-                first_row1 += 1;
+                firstRow1 += 1;
             if (k >= 10 && k < 20)
-                second_row1 += 1;
+                secondRow1 += 1;
             if (k >= 20 && k < 30)
-                third_row1 += 1;
+                thirdRow1 += 1;
 
-            if (first_row1 == 10 && fr1 == false) {
-                fr1 = true;
+            if (firstRow1 == 10 && first1 == false) {
+                first1 = true;
                 alert("Player-2 : First Row");
             }
-            if (second_row == 10 && sr == false) {
-                sr = true;
+            if (secondRow == 10 && second1 == false) {
+                second1 = true;
                 alert("Player-2 : Second Row");
             }
-            if (third_row == 10 && tr == false) {
-                tr = true;
+            if (thirdRow == 10 && third1 == false) {
+                third1 = true;
                 alert("Player-2 : Third Row");
             }
         }
-        if (map3.has(sel_num) && picked_numbers3.indexOf(sel_num) == -1) {
-            picked_numbers3.push(sel_num);
-            var k = map3.get(sel_num);
+        if (map3.has(selNum) && pickedNumbers3.indexOf(selNum) == -1) {
+            pickedNumbers3.push(selNum);
+            var k = map3.get(selNum);
             var style1 = document.getElementById("sqae" + k);
             style1.classList.add('sel-cell');
             check2[k] = 1;
             if (k >= 0 && k < 10)
-                first_row2 += 1;
+                firstRow2 += 1;
             if (k >= 10 && k < 20)
-                second_row2 += 1;
+                secondRow2 += 1;
             if (k >= 20 && k < 30)
-                third_row2 += 1;
+                thirdRow2 += 1;
 
-            if (first_row2 == 10 && fr2 == false) {
-                fr2 = true;
+            if (firstRow2 == 10 && first2 == false) {
+                first2 = true;
                 alert("Player-3 : First Row");
             }
-            if (second_row2 == 10 && sr2 == false) {
-                sr2 = true;
+            if (secondRow2 == 10 && second2 == false) {
+                second2 = true;
                 alert("Player-3 : Second Row");
             }
-            if (third_row2 == 10 && tr2 == false) {
-                tr2 = true;
+            if (thirdRow2 == 10 && third2 == false) {
+                third2 = true;
                 alert("Player-3 : Third Row");
             }
         }
