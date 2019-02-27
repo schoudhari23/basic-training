@@ -2,9 +2,8 @@ var fs = require("fs");
 var files = ["file1.txt", "file2.txt", "file3.txt", "file4.txt", "file5.txt"]
 
 var index = 0;
-fileRead(0);
 
-function fileRead(index) {
+(function fileRead(index) {
     if (index == 5) {
         console.log("Done")
     } else {
@@ -19,4 +18,4 @@ function fileRead(index) {
             }
         })
     }
-}
+})(0);
