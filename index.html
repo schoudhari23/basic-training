@@ -1,99 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>Registration form</title>
-  
-  <script  src="index.js"></script>
-  
+   <head>
+      <meta charset="UTF-8">
+      <title>Registration form</title>
+      <script  src="index.js"></script>
       <link rel="stylesheet" href="style.css">
-
-  
-</head>
-
-<body>
-  <div class="form-style-5">
-  <form method="post" name="regst" id="regst" >
-  	<fieldset>
-
-  	<legend>Student Registration Form</legend>	
-
-	<p>
-		<label for='fname'>Student Name: (maxlength 10)</label><br>
-		<input type="text" name="fname" >
-	</p>
-	<p>
-		<label for='fathername'>Father Name: (maxlength 10)</label><br>
-		<input type="text" name="fathername" >
-	</p>
-	<p>
-		<label for='email'>Email: (minlength 10)</label><br>
-		<input type="text" name="email" >
-	</p>
-	<p>
-		<label for='mobile'>Mobile number: (length 10)</label><br>
-		<input type="text" name="mobile" >
-	</p>
-	<p>
-		<label for='dob'>Date of birth:</label><br>
-		<input type="date" name="dob">
-	<p>
-		<label for='sex'>Sex:</label><br>
-		<input type="radio" name="sex" value="male" size="10">Male
-		<input type="radio" name="sex" value="Female" size="10">Female
-	</p>	
-	<p>
-		<label for="city">City:</label><br>
-		<select name="City">
-         <option value="-1" selected>select..</option>
-         <option value="Pune">Pune</option>
-         <option value="Mumbai">MUMBAI</option>
-         <option value="Goa">GOA</option>
-         <option value="Indore">Indore</option>
-        </select>
-    </p>
-    <p>
-		<label for="District">District:</label><br>
-		<select name="District">
-         <option value="-1" selected>select..</option>
-          <option value="Jalgaon">Jalgaon</option>
-          <option value="Pune">Pune</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Nagpur">Nagpur</option>
-        </select>
-    </p>
-    <p>
-    	<label for="State">State:</label><br>
-    	<select Name="State">
-         <option value="-1" selected>select..</option>
-         <option value="New Delhi">NEW DELHI</option>
-         <option value="Mumbai">MUMBAI</option>
-         <option value="Goa">GOA</option>
-         <option value="Bihar">BIHAR</option>
-      </select>
-    </p>
-    <p>
-		<label for='address'>Address( length between 10 and 250)</label><br>
-		<input type="text" name="address">
-	</p>    
-	   
-	<input type="submit" name='submit' value="Submit">
-
-   </fieldset>
-
-</form>
-</p></div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js'></script>
-
-  
-
-    <script  src="index.js"></script>
-
-
-
-
-</body>
-
+   </head>
+   <body>
+      <div class="form-style-5">
+         <form method="post" name="regst" id="regst" >
+            <fieldset>
+               <legend>Student Registration Form</legend>
+               <p>
+                  <label for='fname'>Student Name: (maxlength 10)</label><br>
+                  <input type="text" name="fname" >
+               </p>
+               <p>
+                  <label for='fathername'>Father Name: (maxlength 10)</label><br>
+                  <input type="text" name="fathername" >
+               </p>
+               <p>
+                  <label for='email'>Email: (minlength 10)</label><br>
+                  <input type="text" name="email" >
+               </p>
+               <p>
+                  <label for='mobile'>Mobile number: (length 10)</label><br>
+                  <input type="text" name="mobile" >
+               </p>
+               <p>
+                  <label for='dob'>Date of birth:</label><br>
+                  <input type="date" name="dob">
+               <p>
+                  <label for='sex'>Sex:</label><br>
+                  <input type="radio" name="sex" value="male" size="10">Male
+                  <input type="radio" name="sex" value="Female" size="10">Female
+               </p>
+               <p>
+                  <label for="city">City:</label><br>
+                  <select name="City">
+                     <option value="-1" selected>select..</option>
+                     <option value="Pune">Pune</option>
+                     <option value="Mumbai">MUMBAI</option>
+                     <option value="Goa">GOA</option>
+                     <option value="Indore">Indore</option>
+                  </select>
+               </p>
+               <p>
+                  <label for="District">District:</label><br>
+                  <select name="District">
+                     <option value="-1" selected>select..</option>
+                     <option value="Jalgaon">Jalgaon</option>
+                     <option value="Pune">Pune</option>
+                     <option value="Mumbai">Mumbai</option>
+                     <option value="Nagpur">Nagpur</option>
+                  </select>
+               </p>
+               <p>
+                  <label for="State">State:</label><br>
+                  <select Name="State">
+                     <option value="-1" selected>select..</option>
+                     <option value="New Delhi">NEW DELHI</option>
+                     <option value="Mumbai">MUMBAI</option>
+                     <option value="Goa">GOA</option>
+                     <option value="Bihar">BIHAR</option>
+                  </select>
+               </p>
+               <p>
+                  <label for='address'>Address( length between 10 and 250)</label><br>
+                  <input type="text" name="address">
+               </p>
+               <input type="submit" name='submit' value="Submit">
+            </fieldset>
+         </form>
+         </p>
+      </div>
+      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src='https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js'></script>
+      <script  src="index.js"></script>
+   </body>
 </html>
