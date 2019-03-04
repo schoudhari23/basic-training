@@ -15,6 +15,4 @@ pool.connect();
 //   console.log('The solution is: ',res[0].solution);  
 // })
 
-
-
 module.exports = pool;
