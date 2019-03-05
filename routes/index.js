@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 require('console.html');
-//console.html('<body><h1>Hello, world!</h1></body>');
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -13,15 +12,10 @@ var medicine = ["headache"];
 
 router.post('/', function (req, res) {
   var problem = req.body.problem;
-  //res.write("Hello");
-  //console.log(typeof problem);
   if (IsJsonString(problem)) {
-    //console.log("JSON");
     var obj = JSON.parse(problem);
-    //console.log(obj);
-    printR(obj,res);
+    printR(obj, res);
   } else {
-    //console.log("plain");
     var strings = problem.split("\n");
     console.log(strings);
     var output = {};
@@ -29,29 +23,24 @@ router.post('/', function (req, res) {
     output["name"] = strings[0];
     var arrayObj = new Array();
     for (var i = 1; i < strings.length; i++) {
-      //console.log(strings[i]);
       var wor = strings[i].split(" ");
-      //console.log(wor);
       var taxObj = {};
       taxObj["quantity"] = wor[0];
       if (wor.includes("imported")) {
         taxObj["imported"] = 1;
         var index = wor.indexOf("imported");
         wor.splice(index, 1);
-        //console.log(wor);
         var objName = wor.slice(1, wor.length - 2);
         objName = objName.join(" ");
-        //console.log(objName); 
         taxObj["name"] = objName;
       } else {
         var objName = wor.slice(1, wor.length - 2);
         objName = objName.join(" ");
-        //console.log(objName);
         taxObj["name"] = objName;
       }
       if (wor.includes("chocolate") || wor.includes("chocolates")) {
         taxObj["category"] = "food";
-      } else if (wor.includes("book") || wor.includes("books"))  {
+      } else if (wor.includes("book") || wor.includes("books")) {
         taxObj["category"] = "book";
       } else if (wor.includes("pills") || wor.includes("pill") || wor.includes("headache")) {
         taxObj["category"] = "medicine";
@@ -60,20 +49,13 @@ router.post('/', function (req, res) {
       }
 
       var pri = wor[wor.length - 1].replace(/(\r\n|\n|\r)/gm, "");
-     // console.log("SpePRICE:" + pri);
       taxObj['price'] = parseFloat(pri);
-      //console.log(taxObj);
       arrayObj.push(taxObj);
-      //output = jsonConcat(output, json1);
-      //console.log(output);
     }
-    // console.log("Arrayyyy:"+arrayObj);
-    output["items"] = arrayObj;
-    //console.log(output);
-    printR(output,res);
-  }
 
-  //res.send('poasd');
+    output["items"] = arrayObj;
+    printR(output, res);
+  }
 });
 
 module.exports = router;
@@ -87,8 +69,7 @@ function IsJsonString(str) {
   return true;
 }
 
-function printR(jsObj,res) {
-  //res.write(jsObj+":");
+function printR(jsObj, res) {
   var factor = 0.05;
   res.write(jsObj["name"]);
   var totalSalesTax = 0;
@@ -107,11 +88,11 @@ function printR(jsObj,res) {
         var y = jsObj.items[i].quantity * jsObj.items[i].price + x;
         jsObj.items[i].price = Math.round(y * 100) / 100;
       }
-      res.write("\n"+jsObj.items[i].quantity + " imported " + jsObj.items[i].name + ": " + jsObj.items[i].price);
+      res.write("\n" + jsObj.items[i].quantity + " imported " + jsObj.items[i].name + ": " + jsObj.items[i].price);
       totalPrice += jsObj.items[i].price;
     } else {
       if (jsObj.items[i].category == 'food' || jsObj.items[i].category == 'medicine' || jsObj.items[i].category == 'book') {
-        var y = jsObj.items[i].quantity * jsObj.items[i].price ;
+        var y = jsObj.items[i].quantity * jsObj.items[i].price;
         jsObj.items[i].price = Math.round(y * 100) / 100;
       } else {
         var x = Math.round((jsObj.items[i].price * jsObj.items[i].quantity * 0.10) / factor) * factor;
@@ -119,7 +100,7 @@ function printR(jsObj,res) {
         var y = jsObj.items[i].price * jsObj.items[i].quantity + x;
         jsObj.items[i].price = Math.round(y * 100) / 100;
       }
-      res.write("\n"+jsObj.items[i].quantity + " " + jsObj.items[i].name + ": " + jsObj.items[i].price);
+      res.write("\n" + jsObj.items[i].quantity + " " + jsObj.items[i].name + ": " + jsObj.items[i].price);
       totalPrice += jsObj.items[i].price;
     }
   }
@@ -128,12 +109,11 @@ function printR(jsObj,res) {
   res.end();
 }
 
-function calcSales(itemPrice,quant,taxRate)
-{
+function calcSales(itemPrice, quant, taxRate) {
   var factor = 0.5
   var x = Math.round((itemPrice * quant * taxRate) / factor) * factor;
   totalSalesTax += x;
-  var y =Itemprice * quant + x;
+  var y = Itemprice * quant + x;
   var price = Math.round(y * 100) / 100;
   return price;
 }
