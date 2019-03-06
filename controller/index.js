@@ -28,13 +28,17 @@ function IsJsonString(str) {
 function StringToJSON(problem) {
   var strings = problem.split("\n");
   var output = {};
+  var arrayObj = new Array();
+
   strings[0] = strings[0].replace(/(\r\n|\n|\r)/gm, "");
   output["name"] = strings[0];
-  var arrayObj = new Array();
+
   for (var i = 1; i < strings.length; i++) {
     var wor = strings[i].split(" ");
     var taxObj = {};
+
     taxObj["quantity"] = wor[0];
+
     if (wor.includes("imported")) {
       taxObj["imported"] = 1;
       var index = wor.indexOf("imported");
@@ -47,6 +51,7 @@ function StringToJSON(problem) {
       objName = objName.join(" ");
       taxObj["name"] = objName;
     }
+
     if (wor.includes("chocolate") || wor.includes("chocolates")) {
       taxObj["category"] = "food";
     } else if (wor.includes("book") || wor.includes("books")) {
@@ -61,7 +66,6 @@ function StringToJSON(problem) {
     taxObj["price"] = parseFloat(pri);
     arrayObj.push(taxObj);
   }
-
   output["items"] = arrayObj;
   return output;
 }
@@ -70,11 +74,11 @@ var totalSalesTax = 0;
 
 function printR(jsObj) {
   var factor = 0.05;
-  abc += jsObj["name"];
-
   var totalPrice = 0;
-  for (var i = 0; i < jsObj.items.length; i++) {
 
+  abc += jsObj["name"];
+  
+  for (var i = 0; i < jsObj.items.length; i++) {
     if (jsObj.items[i].hasOwnProperty("imported")) {
       if (jsObj.items[i].category == 'food' || jsObj.items[i].category == 'medicine' || jsObj.items[i].category == 'book') {
         jsObj.items[i].price = calc(jsObj.items[i].price, jsObj.items[i].quantity, 0.05)
