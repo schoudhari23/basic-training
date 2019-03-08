@@ -74,25 +74,25 @@ let printR = (jsObj) => {
   let totalPrice = 0;
 
   abc += `${jsObj["name"]}`;
-
   for (let i = 0; i < jsObj.items.length; i++) {
     let currItem = jsObj.items[i];
-    if (currItem.hasOwnProperty(`imported`)) {
-      if (currItem.category == `food` || currItem.category == `medicine` || currItem.category == `book`) {
-        currItem.price = calc(currItem.price, currItem.quantity, 0.05)
+    let {quantity,imported,name,category,price} = currItem;
+    if (imported == 1) {
+      if (category == `food` || category == `medicine` || category == `book`) {
+        price = calc(price, quantity, 0.05)
       } else {
-        currItem.price = calc(currItem.price, currItem.quantity, 0.15)
+        price = calc(price, quantity, 0.15)
       }
-      abc += `\n${currItem.quantity} imported ${currItem.name} : ${currItem.price}`;
-      totalPrice += currItem.price;
+      abc += `\n${quantity} imported ${name} : ${price}`;
+      totalPrice += price;
     } else {
-      if (currItem.category == `food` || currItem.category == `medicine` || currItem.category == `book`) {
-        currItem.price = calc(currItem.price, currItem.quantity, 0)
+      if (category == `food` || category == `medicine` || category == `book`) {
+        price = calc(price, quantity, 0)
       } else {
-        currItem.price = calc(currItem.price, currItem.quantity, 0.1)
+        price = calc(price, quantity, 0.1)
       }
-      abc += `\n${currItem.quantity} ${currItem.name} : ${currItem.price}`;
-      totalPrice += currItem.price;
+      abc += `\n${quantity} ${name} : ${price}`;
+      totalPrice += price;
     }
   }
   abc += `\nSales Taxes: ${Math.round(totalSalesTax * 100) / 100}`;
