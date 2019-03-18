@@ -1,4 +1,5 @@
 'use strict';
+
 let food = [`chocolates`, `chocolate`]
 let medicine = [`headache`];
 
@@ -9,7 +10,7 @@ const method = (problem) => {
     let obj = JSON.parse(problem);
     printR(obj);
   } else {
-    let obj = StringToJSON(problem)
+    let obj = StringToJSON(problem);
     printR(obj);
   }
   return abc;
@@ -29,7 +30,7 @@ let StringToJSON = (problem) => {
   let output = {};
   let arrayObj = new Array();
 
-  strings[0] = strings[0].replace(/(\r\n|\n|\r)/gm,``);
+  strings[0] = strings[0].replace(/(\r\n|\n|\r)/gm, ``);
   output[`name`] = strings[0];
 
   for (let i = 1; i < strings.length; i++) {
@@ -39,10 +40,13 @@ let StringToJSON = (problem) => {
     taxObj[`quantity`] = wor[0];
 
     if (wor.includes(`imported`)) {
-      taxObj[`imported`] = 1;
+      taxObj[`imported`] = true;
       let index = wor.indexOf(`imported`);
       wor.splice(index, 1);
+    } else {
+      taxObj[`imported`] = false;
     }
+
 
     let objName = wor.slice(1, wor.length - 2);
     objName = objName.join(` `);
@@ -72,12 +76,13 @@ let totalSalesTax = 0;
 let printR = (jsObj) => {
   let factor = 0.05;
   let totalPrice = 0;
+  console.log(jsObj);
 
   abc += `${jsObj["name"]}`;
   for (let i = 0; i < jsObj.items.length; i++) {
     let currItem = jsObj.items[i];
-    let {quantity,imported,name,category,price} = currItem;
-    if (imported == 1) {
+    let {quantity, imported, name, category, price} = currItem;
+    if (imported == true) {
       if (category == `food` || category == `medicine` || category == `book`) {
         price = calc(price, quantity, 0.05)
       } else {
@@ -107,4 +112,6 @@ let calc = (price, quant, rate) => {
   return Math.round(y * 100) / 100;
 }
 
-module.exports = method;
+module.exports = {
+  method
+};
