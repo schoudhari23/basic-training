@@ -1,5 +1,7 @@
 'use strict';
 
+const models = require('../models');
+
 let food = [`chocolates`, `chocolate`]
 let medicine = [`headache`];
 
@@ -25,9 +27,10 @@ const IsJsonString = (str) => {
   return true;
 }
 
+let output = {};
+
 let StringToJSON = (problem) => {
   let strings = problem.split(`\n`);
-  let output = {};
   let arrayObj = new Array();
 
   strings[0] = strings[0].replace(/(\r\n|\n|\r)/gm, ``);
@@ -76,7 +79,7 @@ let totalSalesTax = 0;
 let printR = (jsObj) => {
   let factor = 0.05;
   let totalPrice = 0;
-  console.log(jsObj);
+  //console.log(jsObj);
 
   abc += `${jsObj["name"]}`;
   for (let i = 0; i < jsObj.items.length; i++) {
