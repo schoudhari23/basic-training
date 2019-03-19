@@ -1,9 +1,9 @@
 'use strict';
 
-const models = require('../models');
-
-let food = [`chocolates`, `chocolate`]
-let medicine = [`headache`];
+const order = require('../models').order;
+const receipt = require('../models').receipt;
+const Order = require('./order');
+const Receipt = require('./receipt');
 
 let abc = new String;
 
@@ -15,6 +15,7 @@ const method = (problem) => {
     let obj = StringToJSON(problem);
     printR(obj);
   }
+  insertInTable(output, finalPay);
   return abc;
 }
 
@@ -74,17 +75,23 @@ let StringToJSON = (problem) => {
   return output;
 }
 
+let finalPay = {};
 let totalSalesTax = 0;
 
 let printR = (jsObj) => {
   let factor = 0.05;
   let totalPrice = 0;
-  //console.log(jsObj);
-
+  abc = "";
   abc += `${jsObj["name"]}`;
   for (let i = 0; i < jsObj.items.length; i++) {
     let currItem = jsObj.items[i];
-    let {quantity, imported, name, category, price} = currItem;
+    let {
+      quantity,
+      imported,
+      name,
+      category,
+      price
+    } = currItem;
     if (imported == true) {
       if (category == `food` || category == `medicine` || category == `book`) {
         price = calc(price, quantity, 0.05)
@@ -105,6 +112,10 @@ let printR = (jsObj) => {
   }
   abc += `\nSales Taxes: ${Math.round(totalSalesTax * 100) / 100}`;
   abc += `\nTotal: ${totalPrice}`;
+  finalPay = {
+    salesTax: totalSalesTax,
+    total: totalPrice
+  }
 }
 
 let calc = (price, quant, rate) => {
@@ -115,6 +126,29 @@ let calc = (price, quant, rate) => {
   return Math.round(y * 100) / 100;
 }
 
+function insertInTable(obj, finalPay) {
+  receipt.create({
+    salesTax: finalPay.salesTax,
+    total: finalPay.total
+  }).then(receipt => {
+    console.log(receipt.dataValues);
+    for (var i = 0; i < obj.items.length; i++) {
+      order.build({
+        name: obj.items[i].name,
+        quantity: obj.items[i].quantity,
+        imported: obj.items[i].imported,
+        category: obj.items[i].category,
+        price: obj.items[i].price,
+        receiptId: receipt.dataValues.id
+      }).save().then(function (newOrder) {
+        console.log(newOrder.dataValues);
+      });
+    }
+  });
+}
+
 module.exports = {
-  method
+  method,
+  Order,
+  Receipt
 };

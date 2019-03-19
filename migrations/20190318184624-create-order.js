@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       imported: {
-        type: Sequelize.STRING
+        type: Sequelize.BOOLEAN
       },
       category: {
         type: Sequelize.STRING
