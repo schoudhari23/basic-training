@@ -4,8 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     salesTax: DataTypes.FLOAT,
     total: DataTypes.FLOAT
   }, {});
-  receipt.associate = function(models) {
-    receipt.hasMany(models.order, { as: 'orders', foreignKey:'receiptId'});
+  receipt.associate = function (models) {
+    receipt.hasMany(models.order, {
+      as: 'orders',
+      foreignKey: 'receiptId'
+    });
   };
   return receipt;
 };

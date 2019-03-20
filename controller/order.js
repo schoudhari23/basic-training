@@ -4,7 +4,9 @@ const receipt = require('../models').receipt;
 function ordersList(req, res) {
   return order
     .findAll()
-    .then((orders) => res.status(200).json(orders))
+    .then((orders) => {
+      res.status(200).send(orders);
+    })
     .catch((error) => {
       res.status(400).send(error);
     });
@@ -13,12 +15,13 @@ function ordersList(req, res) {
 function getOrdById(req, res) {
   order
     .findByPk(req.body.oid)
-    .then((orders) => res.status(200).json(orders))
+    .then((orders) => res.status(200).send(orders))
     .catch((error) => {
       res.status(400).send(error);
     });
 }
 
 module.exports = {
- ordersList, getOrdById 
+  ordersList,
+  getOrdById
 }

@@ -7,8 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     category: DataTypes.STRING,
     price: DataTypes.FLOAT
   }, {});
-  order.associate = function(models) {
-    order.belongsTo(models.receipt, {as : 'receipt', foreignKey:'receiptId'});
+  order.associate = function (models) {
+    order.belongsTo(models.receipt, {
+      as: 'receipt',
+      foreignKey: 'receiptId'
+    });
   };
   return order;
 };

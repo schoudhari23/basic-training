@@ -5,7 +5,9 @@ module.exports = {
     return receipt
       .findAll()
       .then((receipt) => res.status(200).send(receipt))
-      .catch((error) => {res.status(400).send(error);});
+      .catch((error) => {
+        res.status(400).send(error);
+      });
   },
 
   getRecById(req, res) {
@@ -13,6 +15,8 @@ module.exports = {
     return receipt
       .findByPk(req.body.rid)
       .then((receipt) => res.status(200).send(receipt))
-      .catch((error) => {res.status(400).send(error);});
+      .catch((error) => {
+        res.status(400).send(error);
+      });
   }
 }
